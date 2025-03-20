@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rnbDir=~/rnb-system
-userJavaDir=~/rnb-system/java
+userJavaDir="~/rnb-system/java"
 
 mkdir -p $userJavaDir
 
@@ -10,9 +10,10 @@ if [[ -z "${NIX_JAVA_DIR}" ]]; then
 elif [[ -z "$NIX_JAVA_DIR" ]]; then
 	NIX_JAVA_DIR="/nix/store/$(ls /nix/store/ | grep -e ".*temurin.*[0-9\.]$" | tail -1)"
 fi
+
 echo " - devbox java is installed here: $NIX_JAVA_DIR"
 
-rsync -a --chmod=ugo=rwX $NIX_JAVA_DIR/* $userJavaDir
+rsync -a --chmod=ugo=rwX --update $NIX_JAVA_DIR/* $userJavaDir
 
 profileJavaHomeCount=$(cat ~/.profile | grep "JAVA_HOME" | wc -l | sed 's/[[:space:]]*//g')
 bashrcJavaHomeCount=$(cat ~/.bashrc | grep "JAVA_HOME" | wc -l | sed 's/[[:space:]]*//g')
