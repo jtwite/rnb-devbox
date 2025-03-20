@@ -9,8 +9,7 @@
 		"CATALINA_BASE": "{{ .DevboxDir }}"
 	},
 	"create_files": {
-		"{{ .DevboxDir }}/conf/context.xml": "conf/context.xml",
-		"{{ .DevboxDir }}/conf/server.xml": "conf/server.xml"
+		"{{ .DevboxDir }}/conf": "conf"
 	},
 	"shell": {
 		"init_hook": [
@@ -20,8 +19,7 @@
 			"CATALINA_HOME=$(sed -e 's/^\"//' -e 's/\"$//' <<<\"$(nix eval nixpkgs#tomcat10.outPath --offline)\")",
 			"mkdir -p $CATALINA_BASE/conf",
 			"mkdir -p $CATALINA_BASE/webapps/ROOT",
-			"cp -n -R --no-preserve=mode,ownership $CATALINA_HOME/* $CATALINA_BASE",
-			"cp -R --no-preserve=mode,ownership {{.DevboxDir}}/conf $CATALINA_BASE"
+			"cp -n -R --no-preserve=mode,ownership $CATALINA_HOME/* $CATALINA_BASE"
 		],
 		"scripts": {
 			"tomcat": [
