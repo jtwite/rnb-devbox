@@ -23,6 +23,7 @@
 		],
 		"scripts": {
 			"tomcat": [
+				"source ~/.profile",
 				"echo \"starting tomcat $CATALINA_HOME\"",
 				"echo \"Using JAVA_HOME: $JAVA_HOME\"",
 				"echo \"Where the files are going to be: $CATALINA_BASE\"",
