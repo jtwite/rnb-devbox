@@ -9,7 +9,7 @@
 		"CATALINA_BASE": "{{ .Virtenv }}"
 	},
 	"create_files": {
-		"{{ .DevboxDir }}/conf": "tomcat/conf"
+		"{{ .DevboxDir }}/conf": "conf"
 	},
 	"shell": {
 		"init_hook": [
