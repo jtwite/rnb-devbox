@@ -1,6 +1,6 @@
 {
 	"name": "tomcat",
-	"version": "10.4",
+	"version": "10.5",
 	"description": "nextjs tomcat configuration",
 	"packages": [
 		"tomcat@10.1"
