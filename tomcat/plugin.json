@@ -14,7 +14,6 @@
 	},
 	"shell": {
 		"init_hook": [
-			"echo \"JAVA_HOME: $JAVA_HOME\"",
 			"source ~/.profile",
 			"echo \"JAVA_HOME: $JAVA_HOME\"",
 			"CATALINA_HOME=$(sed -e 's/^\"//' -e 's/\"$//' <<<\"$(nix eval nixpkgs#tomcat10.outPath --offline)\")",
