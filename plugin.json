@@ -1,0 +1,27 @@
+{
+	"name": "tomcat",
+	"version": "10.1",
+	"description": "nextjs tomcat configuration",
+	"packages": [
+		"tomcat@10.1"
+	],
+	"env": {
+		"CATALINA_BASE": "{{ .Virtenv }}"
+	},
+	"shell": {
+		"init_hook": [
+			"CATALINA_HOME=$(sed -e 's/^\"//' -e 's/\"$//' <<<\"$(nix eval nixpkgs#tomcat10.outPath --offline)\")",
+			"mkdir -p $CATALINA_BASE/conf",
+			"mkdir -p $CATALINA_BASE/webapps/ROOT",
+			"cp -n -R --no-preserve=mode,ownership $CATALINA_HOME/* $CATALINA_BASE",
+			"cp -R --no-preserve=mode,ownership {{.DevboxDir}}/conf $CATALINA_BASE"
+		],
+		"scripts": {
+			"tomcat": [
+				"echo \"starting tomcat $CATALINA_HOME\"",
+				"echo \"Where the files are going to be: $CATALINA_BASE\"",
+				"${CATALINA_HOME}/bin/catalina.sh run"
+			]
+		}
+	}
+}
