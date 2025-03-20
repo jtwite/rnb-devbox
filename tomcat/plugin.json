@@ -8,8 +8,13 @@
 	"env": {
 		"CATALINA_BASE": "{{ .Virtenv }}"
 	},
+	"create_files": {
+		"{{ .DevboxDir }}/conf": "tomcat/conf"
+	},
 	"shell": {
 		"init_hook": [
+			"echo 'Welcome to devbox!' > /dev/null",
+			"echo $CATALINA_BASE",
 			"CATALINA_HOME=$(sed -e 's/^\"//' -e 's/\"$//' <<<\"$(nix eval nixpkgs#tomcat10.outPath --offline)\")",
 			"mkdir -p $CATALINA_BASE/conf",
 			"mkdir -p $CATALINA_BASE/webapps/ROOT",
