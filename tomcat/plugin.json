@@ -19,8 +19,8 @@
 			"CATALINA_HOME=$(sed -e 's/^\"//' -e 's/\"$//' <<<\"$(nix eval nixpkgs#tomcat10.outPath --offline)\")",
 			"mkdir -p $CATALINA_BASE/conf",
 			"mkdir -p $CATALINA_BASE/webapps/ROOT",
-			"cp -n -R --no-preserve=mode,ownership $CATALINA_HOME/* $CATALINA_BASE",
-			"cp -R --no-preserve=mode,ownership {{.DevboxDir}}/conf $CATALINA_BASE"
+			// "cp -n -R --no-preserve=mode,ownership $CATALINA_HOME/* $CATALINA_BASE",
+			// "cp -R --no-preserve=mode,ownership {{.DevboxDir}}/conf $CATALINA_BASE"
 		],
 		"scripts": {
 			"tomcat": [
