@@ -1,6 +1,6 @@
 {
 	"name": "tomcat",
-	"version": "10.3",
+	"version": "10.4",
 	"description": "nextjs tomcat configuration",
 	"packages": [
 		"tomcat@10.1"
@@ -9,7 +9,8 @@
 		"CATALINA_BASE": "{{ .Virtenv }}"
 	},
 	"create_files": {
-		"{{ .DevboxDir }}/conf": "conf"
+		"{{ .DevboxDir }}/conf/context.xml": "conf/context.xml",
+		"{{ .DevboxDir }}/conf/server.xml": "conf/server.xml"
 	},
 	"shell": {
 		"init_hook": [
