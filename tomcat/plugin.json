@@ -6,7 +6,7 @@
 		"tomcat@10.1"
 	],
 	"env": {
-		"CATALINA_BASE": "{{ .DevboxDir }}"
+		"CATALINA_BASE": "{{ .Virtenv }}"
 	},
 	"create_files": {
 		"{{ .DevboxDir }}/conf/context.xml": "conf/context.xml",
