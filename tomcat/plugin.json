@@ -21,7 +21,7 @@
 			"mkdir -p $CATALINA_BASE/conf",
 			"mkdir -p $CATALINA_BASE/webapps/ROOT",
 			"cp -n -R --no-preserve=mode,ownership $CATALINA_HOME/* $CATALINA_BASE",
-			"cp -R --no-preserve=mode,ownership {{.DevboxDir}}/conf $CATALINA_BASE"
+			"crsync -a --chmod=ugo=rwX {{.DevboxDir}}/conf $CATALINA_BASE"
 		],
 		"scripts": {
 			"tomcat": [
