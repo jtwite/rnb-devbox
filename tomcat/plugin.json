@@ -6,7 +6,8 @@
 		"tomcat@10.1"
 	],
 	"env": {
-		"CATALINA_BASE": "{{ .Virtenv }}"
+		"CATALINA_BASE": "{{ .Virtenv }}",
+		"RNB_CATALINA_CONF": "{{ .DevboxDir }}/conf"
 	},
 	"create_files": {
 		"{{ .Virtenv }}/conf/context.xml": "conf/context.xml",
@@ -20,8 +21,7 @@
 			"mkdir -p $CATALINA_BASE/conf",
 			"mkdir -p $CATALINA_BASE/webapps/ROOT",
 			"cp -n -R --no-preserve=mode,ownership $CATALINA_HOME/* $CATALINA_BASE",
-			"pwd",
-			"cp -R --no-preserve=mode,ownership ./conf $CATALINA_BASE/conf"
+			"cp -R --no-preserve=mode,ownership $RNB_CATALINA_CONF/* $CATALINA_BASE/conf"
 		],
 		"scripts": {
 			"tomcat": [
