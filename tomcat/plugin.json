@@ -9,8 +9,8 @@
 		"CATALINA_BASE": "{{ .Virtenv }}"
 	},
 	"create_files": {
-		"{{ .DevboxDir }}/conf/context.xml": "conf/context.xml",
-		"{{ .DevboxDir }}/conf/server.xml": "conf/server.xml"
+		"{{ .Virtenv }}/conf/context.xml": "conf/context.xml",
+		"{{ .Virtenv }}/conf/server.xml": "conf/server.xml"
 	},
 	"shell": {
 		"init_hook": [
