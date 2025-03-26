@@ -19,6 +19,9 @@
 			"bash $DEVBOX_PROJECT_ROOT/setup-env.sh"
 		],
 		"scripts": {
+			"setup-env" : [
+				"bash $DEVBOX_PROJECT_ROOT/setup-env.sh"
+			],
 			"test1": [
 				"echo 'Error: no test specified' && exit 1"
 			]
