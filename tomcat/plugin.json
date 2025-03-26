@@ -24,6 +24,7 @@
 		],
 		"scripts": {
 			"tomcat": [
+				"echo $DEVBOX_PROJECT_ROOT",
 				"bash $DEVBOX_PROJECT_ROOT/setup-env.sh",
 				"echo \"starting tomcat $CATALINA_HOME\"",
 				"echo \"Using JAVA_HOME: $JAVA_HOME\"",
