@@ -18,7 +18,7 @@
 		"init_hook": [
 			"source ~/.profile",
 			"echo \"JAVA_HOME: $JAVA_HOME\"",
-			"NIX_CATALINA_HOME=$(sed -e 's/^\"//' -e 's/\"$//' <<<\"$(nix eval nixpkgs#tomcat10.outPath --offline)\")",
+			"NIX_CATALINA_HOME=$(sed -e 's/^\"//' -e 's/\"$//' <<<$(nix eval nixpkgs#tomcat10.outPath --offline))",
 			"echo \"NIX_CATALINA_HOME: $NIX_CATALINA_HOME\"",
 			"mkdir -p $CATALINA_BASE/conf",
 			"mkdir -p $CATALINA_BASE/webapps/ROOT",
