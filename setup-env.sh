@@ -1,7 +1,7 @@
 #!/bin/bash
 
-rnbDir=~/rnb-system
-userJavaDir="~/rnb-system/java"
+rnbDir=$HOME/rnb-system
+userJavaDir="$HOME/rnb-system/java"
 
 mkdir -p $userJavaDir
 
