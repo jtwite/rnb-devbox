@@ -38,9 +38,8 @@ fi
 
 source ~/.profile
 
-echo " - Verifying git lfs installation && setting default branch to main"
+echo " - Setting default branch to main"
 
-lfsInstallResult="$(git lfs install)"
 defaultBranchInit="$(git config --global init.defaultBranch main)"
 
 echo " - Verifying you have logged into docker server"

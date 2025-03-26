@@ -16,7 +16,7 @@
 		"init_hook": [
 			"echo 'Welcome to devbox!' > /dev/null",
 			"pwd",
-			"bash setup-env.sh"
+			"bash $DEVBOX_PROJECT_ROOT/setup-env.sh"
 		],
 		"scripts": {
 			"test1": [
