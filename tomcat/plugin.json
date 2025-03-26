@@ -22,7 +22,7 @@
 			"echo \"NIX_CATALINA_HOME: $NIX_CATALINA_HOME\"",
 			"mkdir -p $CATALINA_BASE/conf",
 			"mkdir -p $CATALINA_BASE/webapps/ROOT",
-			"rsync -a -k --chmod=ugo=rwX --ignore-existing $NIX_CATALINA_HOME $CATALINA_BASE"
+			"rsync -a -k --chmod=ugo=rwX --ignore-existing $NIX_CATALINA_HOME/* $CATALINA_BASE"
 		],
 		"scripts": {
 			"tomcat": [
