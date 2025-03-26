@@ -6,6 +6,7 @@
 		"tomcat@10.1"
 	],
 	"env": {
+		"CATALINA_HOME": "{{ .Virtenv }}",
 		"CATALINA_BASE": "{{ .Virtenv }}",
 		"RNB_CATALINA_CONF": "{{ .DevboxDir }}/conf"
 	},
