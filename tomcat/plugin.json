@@ -1,6 +1,6 @@
 {
 	"name": "tomcat",
-	"version": "10.10",
+	"version": "10.11",
 	"description": "nextjs tomcat configuration",
 	"packages": [
 		"tomcat@10.1"
@@ -16,7 +16,6 @@
 	},
 	"shell": {
 		"init_hook": [
-			"bash $DEVBOX_PROJECT_ROOT/setup-env.sh",
 			"source ~/.profile",
 			"echo \"JAVA_HOME: $JAVA_HOME\"",
 			"echo \"NIX_CATALINA_HOME: $NIX_CATALINA_HOME\"",
@@ -25,6 +24,7 @@
 		],
 		"scripts": {
 			"tomcat": [
+				"bash $DEVBOX_PROJECT_ROOT/setup-env.sh",
 				"echo \"starting tomcat $CATALINA_HOME\"",
 				"echo \"Using JAVA_HOME: $JAVA_HOME\"",
 				"echo \"Where the files are going to be: $CATALINA_BASE\"",
