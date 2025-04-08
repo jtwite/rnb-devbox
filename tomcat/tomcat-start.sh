@@ -23,6 +23,7 @@ echoDate "Where the files are going to be: ${green}$CATALINA_BASE${clear}";
 NIX_CATALINA_HOME="/nix/store/$(ls /nix/store/ | grep -e '.*tomcat.*[0-9/.]$' | tail -1)";
 
 echoDate "Syncing tomcat files from ${red}$NIX_CATALINA_HOME${clear} to ${green}$CATALINA_BASE${clear}";
-# rsync -a -k --chmod=ugo=rwX --ignore-existing $NIX_CATALINA_HOME/* $CATALINA_BASE;
 
-# ${CATALINA_HOME}/bin/catalina.sh run;
+rsync -a -k --chmod=Du+rwx --ignore-existing $NIX_CATALINA_HOME/* $CATALINA_BASE;
+
+${CATALINA_HOME}/bin/catalina.sh run;

@@ -19,8 +19,7 @@
 			"source ~/.profile",
 			"echo \"JAVA_HOME: $JAVA_HOME\"",
 			"mkdir -p $CATALINA_BASE/conf",
-			"mkdir -p $CATALINA_BASE/webapps/ROOT",
-			"chmod -R 777 $CATALINA_BASE"
+			"mkdir -p $CATALINA_BASE/webapps/ROOT"
 		],
 		"scripts": {
 			"tomcat": [
