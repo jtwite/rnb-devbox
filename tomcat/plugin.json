@@ -32,6 +32,7 @@
 				"NIX_CATALINA_HOME=$(sed -e 's/^\"//' -e 's/\"$//' <<<$(nix eval nixpkgs#tomcat10.outPath --offline))",
 				"echo \"Syncing tomcat files from $NIX_CATALINA_HOME to $CATALINA_BASE\"",
 				"rsync -a -k --chmod=ugo=rwX --ignore-existing $NIX_CATALINA_HOME/* $CATALINA_BASE",
+				"chmod -R 777 $CATALINA_BASE",
 				"${CATALINA_HOME}/bin/catalina.sh run"
 			]
 		}

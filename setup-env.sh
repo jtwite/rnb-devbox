@@ -63,7 +63,7 @@ if [[ $webEntry -eq 0 || $configEntry -eq 0 || $engageEntry -eq 0 ]]; then
 fi
 
 echo " - Verifying the right certificate is in your java keystore"
-$userJavaDir/bin/keytool -v -list -cacerts -alias vmprdcrt01-ca > key
+certInKeystoreResult=$($userJavaDir/bin/keytool -v -list -cacerts -alias vmprdcrt01-ca)
 
 if [ $? -eq 0 ]; then
 	echo " - - The certificate is in your keystore"
