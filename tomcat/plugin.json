@@ -23,8 +23,7 @@
 		],
 		"scripts": {
 			"tomcat": [
-				"pwd",
-				"bash ./tomcat/tomcat-start.sh"
+				"bash $DEVBOX_PROJECT_ROOT/tomcat/tomcat-start.sh"
 			]
 		}
 	}
