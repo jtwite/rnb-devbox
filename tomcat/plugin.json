@@ -23,7 +23,8 @@
 		],
 		"scripts": {
 			"tomcat": [
-				"bash ./tomcat-start.sh"
+				"pwd",
+				"bash ./tomcat/tomcat-start.sh"
 			]
 		}
 	}

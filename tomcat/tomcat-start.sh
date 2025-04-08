@@ -24,6 +24,10 @@ NIX_CATALINA_HOME="/nix/store/$(ls /nix/store/ | grep -e '.*tomcat.*[0-9/.]$' | 
 
 echoDate "Syncing tomcat files from ${red}$NIX_CATALINA_HOME${clear} to ${green}$CATALINA_BASE${clear}";
 
-rsync -a -k --chmod=Du+rwx --ignore-existing $NIX_CATALINA_HOME/* $CATALINA_BASE;
+chmod -R 777 $CATALINA_BASE;
+
+cp -R -n $NIX_CATALINA_HOME/* $CATALINA_BASE
+
+chmod -R 777 $CATALINA_BASE;
 
 ${CATALINA_HOME}/bin/catalina.sh run;
