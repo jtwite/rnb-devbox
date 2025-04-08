@@ -8,8 +8,7 @@
 	"env": {
 		"CATALINA_HOME": "{{ .Virtenv }}",
 		"CATALINA_BASE": "{{ .Virtenv }}",
-		"RNB_CATALINA_CONF": "{{ .DevboxDir }}/conf",
-		"NIX_CATALINA_HOME": "/nix/store/$(ls /nix/store/ | grep -e '.*tomcat.*[0-9/.]$' | tail -1)"
+		"RNB_CATALINA_CONF": "{{ .DevboxDir }}/conf"
 	},
 	"create_files": {
 		"{{ .Virtenv }}/conf/context.xml": "conf/context.xml",
@@ -19,22 +18,13 @@
 		"init_hook": [
 			"source ~/.profile",
 			"echo \"JAVA_HOME: $JAVA_HOME\"",
-			"echo \"NIX_CATALINA_HOME: $NIX_CATALINA_HOME\"",
 			"mkdir -p $CATALINA_BASE/conf",
-			"mkdir -p $CATALINA_BASE/webapps/ROOT"
+			"mkdir -p $CATALINA_BASE/webapps/ROOT",
+			"chmod -R 777 $CATALINA_BASE"
 		],
 		"scripts": {
 			"tomcat": [
-				"echo $DEVBOX_PROJECT_ROOT",
-				"bash $DEVBOX_PROJECT_ROOT/setup-env.sh",
-				"echo \"Nix tomcat: $NIX_CATALINA_HOME\"",
-				"echo \"starting tomcat $CATALINA_HOME\"",
-				"echo \"Using JAVA_HOME: $JAVA_HOME\"",
-				"echo \"Where the files are going to be: $CATALINA_BASE\"",
-				"echo \"Syncing tomcat files from `$NIX_CATALINA_HOME` to `$CATALINA_BASE`\"",
-				"rsync -a -k --chmod=ugo=rwX --ignore-existing $NIX_CATALINA_HOME/* $CATALINA_BASE",
-				"chmod -R 777 $CATALINA_BASE",
-				"${CATALINA_HOME}/bin/catalina.sh run"
+				"bash ./tomcat-start.sh"
 			]
 		}
 	}

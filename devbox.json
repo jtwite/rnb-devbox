@@ -28,6 +28,6 @@
 		}
 	},
 	"include": [
-		"github:jtwite/rnb-devbox?dir=tomcat"
+		"path:./tomcat/plugin.json"
 	]
 }
