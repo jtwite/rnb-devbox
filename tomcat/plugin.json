@@ -1,6 +1,6 @@
 {
 	"name": "tomcat",
-	"version": "10.14",
+	"version": "10.15",
 	"description": "nextjs tomcat configuration",
 	"packages": [
 		"tomcat@10.1"
@@ -29,7 +29,7 @@
 				"echo \"starting tomcat $CATALINA_HOME\"",
 				"echo \"Using JAVA_HOME: $JAVA_HOME\"",
 				"echo \"Where the files are going to be: $CATALINA_BASE\"",
-				"NIX_CATALINA_HOME=$(ls /nix/store/ | grep -e \".*tomcat.*[0-9/.]$\" | tail -1)",
+				"NIX_CATALINA_HOME='/nix/store/$(ls /nix/store/ | grep -e '.*tomcat.*[0-9/.]$' | tail -1)'",
 				"echo \"Syncing tomcat files from `$NIX_CATALINA_HOME` to `$CATALINA_BASE`\"",
 				"rsync -a -k --chmod=ugo=rwX --ignore-existing $NIX_CATALINA_HOME/* $CATALINA_BASE",
 				"chmod -R 777 $CATALINA_BASE",
