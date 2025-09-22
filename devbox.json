@@ -1,33 +1,32 @@
 {
-	"$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.0/.schema/devbox.schema.json",
-	"packages": [
-		"colima@latest",
-		"git@latest",
-		"tomcat@10.1",
-		"git-lfs@3.6.1",
-		"temurin-bin-23@23.0.2",
-		"docker@27.5.1",
-		"docker-compose@2.33.1",
-		"nodejs@20",
-		"lefthook@latest",
-		"global@latest"
-	],
-	"shell": {
-		"init_hook": [
-			"echo 'Welcome to devbox!' > /dev/null",
-			"pwd",
-			"bash $DEVBOX_PROJECT_ROOT/setup-env.sh"
-		],
-		"scripts": {
-			"setup-env" : [
-				"bash $DEVBOX_PROJECT_ROOT/setup-env.sh"
-			],
-			"test1": [
-				"echo 'Error: no test specified' && exit 1"
-			]
-		}
-	},
-	"include": [
-		"path:./tomcat/plugin.json"
-	]
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.0/.schema/devbox.schema.json",
+  "packages": [
+    "colima@latest",
+    "tomcat@10.1",
+    "git-lfs@3.6.1",
+    "docker@27.5.1",
+    "docker-compose@2.33.1",
+    "nodejs@20",
+    "lefthook@latest",
+    "global@latest",
+    "temurin-bin-24@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Welcome to devbox!' > /dev/null",
+      "pwd",
+      "bash $DEVBOX_PROJECT_ROOT/setup-env.sh"
+    ],
+    "scripts": {
+      "setup-env": [
+        "bash $DEVBOX_PROJECT_ROOT/setup-env.sh"
+      ],
+      "test1": [
+        "echo 'Error: no test specified' && exit 1"
+      ]
+    }
+  },
+  "include": [
+    "path:./tomcat/plugin.json"
+  ]
 }
