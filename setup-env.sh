@@ -24,28 +24,30 @@ if [[ -z "${NIX_JAVA_DIR}" ]]; then
 elif [[ -z "$NIX_JAVA_DIR" ]]; then
 	NIX_JAVA_DIR="/nix/store/$(ls /nix/store/ | grep -e ".*temurin.*[0-9\.]$" | tail -1)"
 fi
-rsync -a -k --chmod=ugo=rwX --ignore-existing $NIX_JAVA_DIR/* $userJavaDir
+rsync -a -k --chmod=777 $NIX_JAVA_DIR/* $userJavaDir
 echoDate " - devbox java is installed here: $NIX_JAVA_DIR"
 
 profileJavaHomeCount=$(cat ~/.profile | grep "JAVA_HOME" | wc -l | sed 's/[[:space:]]*//g')
 bashrcJavaHomeCount=$(cat ~/.bashrc | grep "JAVA_HOME" | wc -l | sed 's/[[:space:]]*//g')
 zshrcJavaHomeCount=$(cat ~/.zshrc | grep "JAVA_HOME" | wc -l | sed 's/[[:space:]]*//g')
-javaHomeString="\nexport JAVA_HOME=\"$userJavaDir\""
+javaHomeString="export JAVA_HOME=\"$userJavaDir\""
 
 if [[ $profileJavaHomeCount -eq 0 ]]; then
-	echoDate -e $javaHomeString >> ~/.profile;
+	echo -e "Adding JAVA_HOME to ~/.profile";
+	echo -e $javaHomeString >> ~/.profile;
 elif [[ $profileJavaHomeCount -eq 1 ]]; then
 	sed -i -e "s/export JAVA_HOME=.*/export JAVA_HOME=\"${userJavaDir//\//\\/}\"/" ~/.profile
 fi
-
 if [[ $bashrcJavaHomeCount -eq 0 ]]; then
-	echoDate -e $javaHomeStringE >> ~/.bashrc;
+	echo -e "Adding JAVA_HOME to ~/.bashrc";
+	echo -e $javaHomeString >> ~/.bashrc;
 elif [[ $bashrcJavaHomeCount -eq 1 ]]; then
 	sed -i -e "s/export JAVA_HOME=.*/export JAVA_HOME=\"${userJavaDir//\//\\/}\"/" ~/.bashrc
 fi
 
 if [[ $zshrcJavaHomeCount -eq 0 ]]; then
-	echoDate -e $javaHomeString >> ~/.zshrc;
+	echo -e "Adding JAVA_HOME to ~/.zshrc";
+	echo -e $javaHomeString >> ~/.zshrc;
 elif [[ $zshrcJavaHomeCount -eq 1 ]]; then
 	sed -i -e "s/export JAVA_HOME=.*/export JAVA_HOME=\"${userJavaDir//\//\\/}\"/" ~/.zshrc
 fi
